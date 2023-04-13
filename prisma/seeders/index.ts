@@ -5,6 +5,12 @@ const prisma = new PrismaClient();
 async function loadSeed() {
   console.log('Loading seeders...');
 
+  await prisma.$executeRaw(Prisma.sql`
+    INSERT INTO roles (id, name)
+    VALUES ('d860f629-249a-41ae-b431-7c068969fc8c', 'user')
+  `);
+  // return;
+
   await prisma.$queryRaw(Prisma.sql`
     INSERT INTO roles (id, name)
     VALUES ('2ef3834f-2060-4f9a-9d99-8419d094a3cc', 'administrator')

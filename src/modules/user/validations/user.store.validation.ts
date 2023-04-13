@@ -1,12 +1,5 @@
-import { Role } from '@prisma/client';
 import { IUserStore } from '../dtos';
-import {
-  IsEmail,
-  IsEnum,
-  IsNotEmpty,
-  IsString,
-  MinLength,
-} from 'class-validator';
+import { IsEmail, IsNotEmpty, IsString, MinLength } from 'class-validator';
 
 export class UserStoreValidation implements IUserStore {
   @IsNotEmpty()
@@ -22,8 +15,4 @@ export class UserStoreValidation implements IUserStore {
   @IsString()
   @MinLength(6)
   password: string;
-
-  @IsNotEmpty()
-  @IsEnum(Role)
-  role: Role;
 }

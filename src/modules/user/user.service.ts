@@ -52,7 +52,10 @@ export class UserService {
 
     try {
       await this.prismaService.user.create({
-        data,
+        data: {
+          ...data,
+          role_id: 'd860f629-249a-41ae-b431-7c068969fc8c',
+        },
       });
     } catch (error: any) {
       if (error.meta.target[0].includes('email')) {
